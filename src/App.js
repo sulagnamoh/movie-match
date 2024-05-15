@@ -10,7 +10,6 @@ function App() {
                     <li>
                         <a href="#courses">Movie Match</a>
                     </li>
-                      
                     </div>
                     <li>
                         <a href="#courses">Courses</a>
