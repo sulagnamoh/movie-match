@@ -7,9 +7,10 @@ function App() {
             <nav class="navbar background">
                 <ul class="nav-list">
                     <div class="logo">
-                        <img src=
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210420155809/gfg-new-logo.png"
-                        />
+                    <li>
+                        <a href="#courses">Movie Match</a>
+                    </li>
+                      
                     </div>
                     <li>
                         <a href="#courses">Courses</a>
