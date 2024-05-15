@@ -4,6 +4,9 @@ import "./App.css";
 function App() {
     return (
         <div>
+            <header>
+                Movie Match
+            </header>
             <nav class="navbar background">
                 <ul class="nav-list">
                     <div class="logo">
