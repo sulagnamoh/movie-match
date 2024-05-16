@@ -17,7 +17,7 @@ function App() {
             <div>
                 <header className="header">
                     <h1>Movie Match</h1>
-                    <h5>Your guide to finding your new favorite movies!</h5>
+                    <h5>Your guide to finding your new favorite movies!!!</h5>
                 </header>
                 <nav>
                     <Link to="/home">Home</Link> | 
