@@ -23,6 +23,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.header {
+    background-color: lightblue;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+};
 
 .App-link {
   color: #61dafb;
