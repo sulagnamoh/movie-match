@@ -1,0 +1,29 @@
+/* MovieList.css */
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .movie-box {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f9ff;
+  }
+  
+  .movie-box:hover {
+    background-color: #42a5f5; /* Darker blue when hovered */
+  }
+
+  .movie-box h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .movie-box p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
