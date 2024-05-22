@@ -74,10 +74,9 @@ function App() {
             </ul>
           </div>
                    <Routes>
-                     <Route path="/" element={<Home />} />  // Root path
                     <Route path="/home" element={<Home />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="*" element={<Home />} />  // Fallback to Home for undefined paths
+                    {/* <Route path="*" element={<Home />} />  // Fallback to Home for undefined paths */}
                 </Routes>
         </div>
       </Router>
