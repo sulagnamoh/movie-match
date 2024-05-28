@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Login from "./pages/Login";
 
 function App() {
     return (
@@ -14,13 +15,15 @@ function App() {
             <div>
                 <nav>
                     <Link to="/Home">Home</Link> | 
-                    <Link to="/About">About</Link>
+                    <Link to="/About">About</Link> |
+                    <Link to="/Login">Login</Link> |
                 </nav>
                 <Routes>
-                    <Route path="/" element={<Home />} />  // Root path
+                    <Route path="/" element={<Home />} />
                     <Route path="/Home" element={<Home />} />
                     <Route path="/About" element={<About />} />
-                    <Route path="*" element={<Home />} />  // Fallback to Home for undefined paths
+                    <Route path="/Login" element={<Login />} />
+                    <Route path="*" element={<Home />} />
                 </Routes>
             </div>
         </Router>
