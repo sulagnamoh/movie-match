@@ -1,31 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import './Login.css'
 
-//import '../../App.css'
+import user_icon from './components/images/user.png'
+import email_icon from './components/images/email.png'
+import password_icon from './components/images/password.png'
 
-export default function SignInPage() {
+function Login() {
     return (
-        <div className="text-center m-5-auto">
-            <h2>Sign in to us</h2>
-            <form action="/home">
-                <p>
-                    <label>Username or email address</label><br/>
-                    <input type="text" name="first_name" required />
-                </p>
-                <p>
-                    <label>Password</label>
-                    <Link to="/forget-password"><label className="right-label">Forget password?</label></Link>
-                    <br/>
-                    <input type="password" name="password" required />
-                </p>
-                <p>
-                    <button id="sub_btn" type="submit">Login</button>
-                </p>
-            </form>
-            <footer>
-                <p>First time? <Link to="/register">Create an account</Link>.</p>
-                <p><Link to="/">Back to Homepage</Link>.</p>
-            </footer>
+        <div className='container'>
+            <div className="header"> 
+                <div className="text">Login</div> 
+                <div className="underline"></div>
+            </div>
+            <div className="inputs">
+                <div className="input">
+                    <img src={user_icon} alt="" />
+                    <input type="userid" placeholder="User ID" />
+                </div>
+                <div className="input">
+                    <img src={email_icon} alt="" />
+                    <input type="email" placeholder="Email" />
+                </div>
+                <div className="input">
+                    <img src={password_icon} alt="" />
+                    <input type="password" placeholder="Password" />
+                </div>
+            </div>
+            <div className="forgot-password-container">
+                <button className="forgot-password-button" onClick={() => window.location.href='/forgot-password'}>Forgot Password?</button>
+            </div>
+            <div className="submit-container">
+                <div className="submit">Login</div>
+            </div>
         </div>
-    )
+    );
 }
+
+export default Login;

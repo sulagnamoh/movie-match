@@ -11,6 +11,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
         <li><Link to="/genre" onClick={toggleSidebar}>My Profile</Link></li>
         <li><Link to="./pages/About" onClick={toggleSidebar}>My Favorites</Link></li>
         <li><Link to="/streaming-platforms" onClick={toggleSidebar}>Sign Out</Link></li>
+        <li><Link to="./Login" onClick={toggleSidebar}>Login</Link></li>
       </ul>
     </div>
   );
