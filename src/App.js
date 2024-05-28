@@ -16,6 +16,7 @@ import Genres from './pages/Genres';
 import Streaming from './pages/Streaming';
 import Sidebar from './pages/Sidebar';
 import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -79,6 +80,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     {/* <Route path="*" element={<Home />} />  // Fallback to Home for undefined paths */}
                     <Route path="/Login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
         </div>
       </Router>
