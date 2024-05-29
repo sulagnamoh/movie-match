@@ -4,10 +4,10 @@ import './MovieList.css'; // Import CSS for styling
 
   // Sample movie data
   export const movies_db = [
-    { id: 1, name: 'Inception', description: 'A mind-bending thriller about dreams and reality.' },
-    { id: 2, name: 'The Shawshank Redemption', description: 'A story of hope and friendship in a prison.' },
-    { id: 3, name: 'The Godfather', description: 'A classic mafia saga of power, loyalty, and betrayal.' },
-    { id: 4, name: 'The Dark Knight', description: 'A gritty and intense superhero drama with the Joker.' },
+    { id: 1, name: 'Inception', description: 'A mind-bending thriller about dreams and reality.', genre: '0' },
+    { id: 2, name: 'The Shawshank Redemption', description: 'A story of hope and friendship in a prison.', genre: '1' },
+    { id: 3, name: 'The Godfather', description: 'A classic mafia saga of power, loyalty, and betrayal.', genre: '0' },
+    { id: 4, name: 'The Dark Knight', description: 'A gritty and intense superhero drama with the Joker.', genre: '2' },
     { id: 5, name: 'Pulp Fiction', description: 'A non-linear story of crime and redemption.' },
     { id: 6, name: 'Forrest Gump', description: 'A heartwarming tale of an ordinary man living an extraordinary life.' },
     { id: 7, name: 'Fight Club', description: 'An exploration of masculinity and consumerism in modern society.' },
@@ -21,17 +21,6 @@ import './MovieList.css'; // Import CSS for styling
   ];
 
   export function MovieList() {
-  // return (
-
-  //   <div className="movie-list">
-  //     {movies_db.map((movie) => (
-  //       <div key={movie.id} className="movie-box">
-  //         <h2>{movie.name}</h2>
-  //         <p>{movie.description}</p>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
 }
 
 export default MovieList;

@@ -21,6 +21,7 @@ import Register from './pages/Register';
 import {movies_db} from './pages/Home';
 import {MovieList} from './pages/Home';
 import Search from './pages/Search';
+import Checkbox from './pages/Checkbox';
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -31,7 +32,7 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  console.log(movies_db.filter(movie=>movie.name.toLowerCase().includes("in")));
+  
     return (
         <div>
         <header className="header">
@@ -48,18 +49,10 @@ function App() {
         <div className="app-container">
           <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
           <div className="main-content">
+            <Checkbox/>
             <button className="toggle-btn" onClick={toggleSidebar}>☰</button>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-            <nav className='nav-links'>
-                    Genres
-                     <Link to="/home">Horror</Link>  
-                     <Link to="/home">Comedy</Link> 
-                     <Link to="/home">Action</Link> 
-                     Streaming Platforms
-                     <Link to="/about">Netflix</Link>
-                     <Link to="/about">Hulu</Link>
-                     <Link to="/about">Disney+</Link>
-                 </nav>
+           
               <Search/>
             
             </div>
