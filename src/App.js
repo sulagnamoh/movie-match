@@ -20,6 +20,7 @@ import Login from './pages/login';
 import Register from './pages/Register';
 import {movies_db} from './pages/Home';
 import {MovieList} from './pages/Home';
+import Search from './pages/Search';
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -50,17 +51,7 @@ function App() {
             <button className="toggle-btn" onClick={toggleSidebar}>☰</button>
             <div style={{ display: 'flex', alignItems: 'center' }}>
             <div className="search-and-nav">
-              <input type = "text" placeholder='Search' className='search' onChange={e=>setSearchResults(e.target.value)}/>
-              <div className="movie-list">
-                {movies_db.filter((movie) =>
-                  movie.name.toLowerCase().includes(searchResults)).map((movie)=>(
-                  <div key={movie.name} className='listItem'> 
-                  <div className="movie-box">
-                    <h2>{movie.name}</h2>
-          <p>{movie.description}</p> </div>
-                </div>
-                ))}
-              </div>
+              <Search/>
               <nav className='nav-links'>
                     Genres
                      <Link to="/home">Horror</Link>  
