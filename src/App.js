@@ -16,26 +16,21 @@ import About from './pages/About';
 import Genres from './pages/Genres';
 import Streaming from './pages/Streaming';
 import Sidebar from './pages/Sidebar';
-import Login from './pages/Login'
-import Register from './pages/Register'
+import Login from './pages/login';
+import Register from './pages/Register';
+import {movies_db} from './pages/Home';
+import {MovieList} from './pages/Home';
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState("");
 
 
-
- const handleSearch = (searchTerm) => {
-   // Here you would implement the logic to fetch search results based on the searchTerm
-   // For demonstration, let's just update the search results state with the search term
-   setSearchResults([searchTerm]);
- };
  const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  
-  
+  console.log(movies_db.filter(movie=>movie.name.toLowerCase().includes("in")));
     return (
         <div>
         <header className="header">
@@ -55,7 +50,17 @@ function App() {
             <button className="toggle-btn" onClick={toggleSidebar}>☰</button>
             <div style={{ display: 'flex', alignItems: 'center' }}>
             <div className="search-and-nav">
-              <SearchBar onSearch={handleSearch} />
+              <input type = "text" placeholder='Search' className='search' onChange={e=>setSearchResults(e.target.value)}/>
+              <div className="movie-list">
+                {movies_db.filter((movie) =>
+                  movie.name.toLowerCase().includes(searchResults)).map((movie)=>(
+                  <div key={movie.name} className='listItem'> 
+                  <div className="movie-box">
+                    <h2>{movie.name}</h2>
+          <p>{movie.description}</p> </div>
+                </div>
+                ))}
+              </div>
               <nav className='nav-links'>
                     Genres
                      <Link to="/home">Horror</Link>  
@@ -73,11 +78,6 @@ function App() {
               <Route path="/streaming" element={<Streaming />} />
               <Route path="/" element={<Home />} />
             </Routes>
-            <ul>
-              {searchResults.map((result, index) => (
-                <li key={index}>{result}</li>
-              ))}
-            </ul>
           </div>
                    <Routes>
                     <Route path="/home" element={<Home />} />

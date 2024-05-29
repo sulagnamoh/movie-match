@@ -1,9 +1,9 @@
 import React from 'react';
 import './MovieList.css'; // Import CSS for styling
 
-function MovieList() {
+
   // Sample movie data
-  const movies = [
+  export const movies_db = [
     { id: 1, name: 'Inception', description: 'A mind-bending thriller about dreams and reality.' },
     { id: 2, name: 'The Shawshank Redemption', description: 'A story of hope and friendship in a prison.' },
     { id: 3, name: 'The Godfather', description: 'A classic mafia saga of power, loyalty, and betrayal.' },
@@ -20,34 +20,20 @@ function MovieList() {
     { id: 14, name: 'The Departed', description: 'A crime thriller about an undercover cop and a mole in the police department.' }
   ];
 
-  
-  return (
+  export function MovieList() {
+  // return (
 
-    <div className="movie-list">
-      {movies.map((movie) => (
-        <div key={movie.id} className="movie-box">
-          <h2>{movie.name}</h2>
-          <p>{movie.description}</p>
-        </div>
-      ))}
-    </div>
-  );
+  //   <div className="movie-list">
+  //     {movies_db.map((movie) => (
+  //       <div key={movie.id} className="movie-box">
+  //         <h2>{movie.name}</h2>
+  //         <p>{movie.description}</p>
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 }
 
 export default MovieList;
 
 
-
-/*import React from 'react';
-
-function Home() {
-    return (
-        <div>
-            <h1>Welcome to the Homepage</h1>
-            <p>This is the main page of our simple React application.</p>
-        </div>
-    );
-}
-
-export default Home;
-*/
