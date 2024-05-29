@@ -20,7 +20,9 @@ function MovieList() {
     { id: 14, name: 'The Departed', description: 'A crime thriller about an undercover cop and a mole in the police department.' }
   ];
 
+  
   return (
+
     <div className="movie-list">
       {movies.map((movie) => (
         <div key={movie.id} className="movie-box">

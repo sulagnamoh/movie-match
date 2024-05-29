@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import SearchBar from './pages/SearchBar';
 import {
@@ -23,6 +24,7 @@ function App() {
     const [searchResults, setSearchResults] = useState([]);
 
 
+
  const handleSearch = (searchTerm) => {
    // Here you would implement the logic to fetch search results based on the searchTerm
    // For demonstration, let's just update the search results state with the search term
@@ -32,10 +34,12 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  
+  
     return (
         <div>
         <header className="header">
-                     <h1>Movie Match</h1>
+                     <h1>Movie Match </h1>
                      <h5>Your guide to finding your new favorite movies!!!</h5>
                  </header>                 
         <Router>
