@@ -50,9 +50,7 @@ function App() {
           <div className="main-content">
             <button className="toggle-btn" onClick={toggleSidebar}>☰</button>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div className="search-and-nav">
-              <Search/>
-              <nav className='nav-links'>
+            <nav className='nav-links'>
                     Genres
                      <Link to="/home">Horror</Link>  
                      <Link to="/home">Comedy</Link> 
@@ -62,7 +60,8 @@ function App() {
                      <Link to="/about">Hulu</Link>
                      <Link to="/about">Disney+</Link>
                  </nav>
-                 </div>
+              <Search/>
+            
             </div>
             <Routes>
               <Route path="/genres" element={<Genres />} />

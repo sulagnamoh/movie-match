@@ -71,7 +71,7 @@
 .nav-links {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-right: 100px;
 }
 .main-content-2 {
   margin-bottom: 15px; /* Add margin to create space below the header */
