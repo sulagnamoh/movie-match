@@ -18,6 +18,7 @@ export function SearchFeat() {
     const [isHuluChecked, setIsHuluChecked] = useState(false);
     const [isNetflixChecked, setIsNetflixChecked] = useState(false);
     const [isDisneyChecked, setIsDisneyChecked] = useState(false);
+    const [isPrimeChecked, setisPrimeChecked] = useState(false);
 
     const handleCheckboxChange = (event) => {
       const {name, checked } = event.target;
@@ -33,6 +34,8 @@ export function SearchFeat() {
       setIsHuluChecked(checked);
     } else if (name === 'disney') {
       setIsDisneyChecked(checked);
+    } else if (name === 'prime') {
+      setisPrimeChecked(checked);
     }
    };
 
@@ -43,12 +46,14 @@ export function SearchFeat() {
                 genreMatch = (isComedyChecked && movie.genre === 'comedy') ||
                              (isActionChecked && movie.genre === 'action') ||
                              (isHorrorChecked && movie.genre === 'horror');
+                             
             }
             let platformMatch = true;
             if (isNetflixChecked || isHuluChecked || isDisneyChecked) {
               platformMatch = (isNetflixChecked && movie.platform === 'netflix') ||
                               (isHuluChecked && movie.platform === 'hulu') ||
-                              (isDisneyChecked && movie.platform === 'disney');
+                              (isDisneyChecked && movie.platform === 'disney') ||
+                              (isPrimeChecked && movie.platform === 'prime');
           }
  
             return genreMatch && platformMatch;
@@ -113,6 +118,15 @@ return (
                    onChange={handleCheckboxChange}
                />
                Disney+
+           </label>
+           <label style={{ marginRight: '10px' }}>
+               <input
+                   type="checkbox"
+                   name="prime"
+                   checked={isPrimeChecked}
+                   onChange={handleCheckboxChange}
+               />
+               Prime
            </label>
      </div>
       <input type = "text" placeholder='Search' className='search' onChange={e=>setSearchResults(e.target.value)}/>
