@@ -126,7 +126,7 @@ return (
                    checked={isPrimeChecked}
                    onChange={handleCheckboxChange}
                />
-               Disney+
+               Prime
            </label>
      </div>
       <input type = "text" placeholder='Search' className='search' onChange={e=>setSearchResults(e.target.value)}/>
