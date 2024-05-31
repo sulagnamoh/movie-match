@@ -18,7 +18,7 @@ import Streaming from './pages/Streaming';
 import Sidebar from './pages/Sidebar';
 import Login from './pages/login';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
+import Profile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import {movies_db} from './pages/Home';
 import {MovieList} from './pages/Home';

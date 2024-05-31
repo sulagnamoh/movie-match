@@ -1,0 +1,30 @@
+.star-rating
+{
+    display: flex;
+}
+
+.unselected-star
+{
+    color: #dddddd;
+    cursor: pointer;
+}
+
+.selected-star
+{
+    color: #f3e00c;
+    cursor: pointer;
+}
+
+.half-selected-star
+{
+    color: f3e00c;
+    position: relative;
+}
+.half-selected-star::before
+{
+    content: "★";
+    position: absolute;
+    color: #dddddd;
+    width: 50%;
+    overflow: hidden;
+}
