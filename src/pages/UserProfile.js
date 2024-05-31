@@ -12,7 +12,7 @@ const UserProfile = () => {
 
 
  const goToFavorites = () => {
-   window.location.href = '/favorites'; // Adjust the path as needed
+   window.location.href = './pages/Favorites'; // Adjust the path as needed
  };
 
 
