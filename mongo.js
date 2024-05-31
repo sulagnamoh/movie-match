@@ -13,7 +13,11 @@ const newSchema= new mongoose.Schema({
     password: {
         type:String,
         required:true
-    }
+    },
+    name: {
+        type:String,
+        required:false
+    },
 })
 
 const collection = mongoose.model("collection", newSchema)

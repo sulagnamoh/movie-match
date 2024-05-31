@@ -15,6 +15,8 @@ import Register from './pages/Register';
 import Profile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import Search from './pages/Search';
+import UserProfile from './pages/UserProfile';
+
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -55,6 +57,8 @@ function App() {
                     <Route path="/Login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/Search" element={<Search />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/profile" element={<UserProfile />} />
                 </Routes>
         </div>
       </Router>

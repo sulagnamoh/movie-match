@@ -10,32 +10,32 @@ app.get("/", cors(), (req,res)=> {
 
 })
 
-app.post("/",async(req,res)=> {
-    const{email, password} = req.body
+app.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
     try {
-        const check=await collection.findOne({email:email})
+        const user = await collection.findOne({ email: email, password: password });
 
-        if(check) {
-            res.json("exist")
+        if (user) {
+            res.json({ status: "success", user: user });
+        } else {
+            res.json({ status: "fail" });
         }
-        else {
-            res.json("notexist")
-        }
 
+    } catch (e) {
+        res.json({ status: "error" });
     }
-    catch(e) {
-        res.json("notexist")
+});
 
-    }
-})
 
 
 app.post("/register",async(req,res)=> {
-    const{email, password} = req.body
+    const{email,name, password} = req.body
 
     const data={
         email:email,
-        password:password
+        password:password,
+        name:name,
     }
 
 
