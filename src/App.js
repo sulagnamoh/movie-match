@@ -18,6 +18,8 @@ import Streaming from './pages/Streaming';
 import Sidebar from './pages/Sidebar';
 import Login from './pages/login';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
+import Favorites from './pages/Favorites';
 import {movies_db} from './pages/Home';
 import {MovieList} from './pages/Home';
 import Search from './pages/Search';
@@ -65,6 +67,8 @@ function App() {
                    <Routes>
                     <Route path="/home" element={<Home />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/favorites" element={<Favorites />} />
                     {/* <Route path="*" element={<Home />} />  // Fallback to Home for undefined paths */}
                     <Route path="/Login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

@@ -8,8 +8,8 @@ function Sidebar({ isOpen, toggleSidebar }) {
       <button className="close-btn" onClick={toggleSidebar}>×</button>
       <ul>
         <li><Link to="/" onClick={toggleSidebar}>Home</Link></li>
-        <li><Link to="/genre" onClick={toggleSidebar}>My Profile</Link></li>
-        <li><Link to="./pages/About" onClick={toggleSidebar}>My Favorites</Link></li>
+        <li><Link to="/profile" onClick={toggleSidebar}>My Profile</Link></li>
+        <li><Link to="/favorites" onClick={toggleSidebar}>My Favorites</Link></li>
         <li><Link to="/streaming-platforms" onClick={toggleSidebar}>Sign Out</Link></li>
         <li><Link to="./Login" onClick={toggleSidebar}>Login</Link></li>
       </ul>
