@@ -35,6 +35,7 @@ export function SearchFeat() {
       setIsDisneyChecked(checked);
     }
    };
+
    const filteredMovies = movies_db
           .filter((movie) => {
               let genreMatch = true;
@@ -49,7 +50,6 @@ export function SearchFeat() {
                               (isHuluChecked && movie.platform === 'hulu') ||
                               (isDisneyChecked && movie.platform === 'disney');
           }
- 
  
             return genreMatch && platformMatch;
         })
