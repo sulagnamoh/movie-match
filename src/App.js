@@ -9,7 +9,6 @@ import {
     Link
 } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
 import Sidebar from './pages/Sidebar';
 import Login from './pages/login';
 import Register from './pages/Register';
@@ -50,7 +49,6 @@ function App() {
           </div>
                    <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/about" element={<About />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/favorites" element={<Favorites />} />
                     {/* <Route path="*" element={<Home />} />  // Fallback to Home for undefined paths */}

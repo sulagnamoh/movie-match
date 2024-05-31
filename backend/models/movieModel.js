@@ -16,8 +16,8 @@ const eventSchema = new Schema({
         required: true
     },
     platform: {
-        type: Number,
-        required: false
+        type: String,
+        required: true
     },
     rank: {
         type: Number,
