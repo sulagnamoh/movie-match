@@ -16,7 +16,7 @@ import About from './pages/About';
 import Genres from './pages/Genres';
 import Streaming from './pages/Streaming';
 import Sidebar from './pages/Sidebar';
-import Login from './pages/login';
+import Login from './pages/Login';
 import Register from './pages/Register';
 import {movies_db} from './pages/Home';
 import {MovieList} from './pages/Home';
