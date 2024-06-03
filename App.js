@@ -59,11 +59,10 @@ app.post("/register",async(req,res)=> {
     }
 })
 
-// Correct the endpoint to use movieCollection
 app.get("/api/movies", async (req, res) => {
     try {
         const movies = await movieCollection.find({});
-        res.json(movies);  // Correct variable name
+        res.json(movies); 
     } catch (e) {
         res.status(500).send('Error fetching movies: ' + e.message);
     }
@@ -73,4 +72,21 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+});
+
+app.post("/api/movies", async (req, res) => {
+    const { title, genre, streamingPlatforms } = req.body;
+    try {
+        const newMovie = new movieCollection({
+            title,
+            genre,
+            streamingPlatforms
+        });
+        await newMovie.save();
+        res.status(201).json(newMovie);
+        console.log(`Movie ${title} added successfully`);
+    } catch (e) {
+        res.status(500).send('Error adding movie: ' + e.message);
+        console.error("Error adding movie:", e);
+    }
 });

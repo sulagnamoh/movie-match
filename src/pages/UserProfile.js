@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './UserProfile.css';
 
 const UserProfile = () => {
@@ -51,10 +52,19 @@ const UserProfile = () => {
         return valid;
     };
 
-    const addMovie = () => {
+    const addMovie = async() => {
         if (validateInputs()) {
-            setFavoriteMovies([...favoriteMovies, {...newMovie, rating: parseFloat(newMovie.rating) }]);
-            setNewMovie({ title: '', rating: '', genre: '', platform: '' });
+            try{
+                const response = await axios.post('http://localhost:3000/api/movies',{
+                    title: newMovie.title,
+                    genre: newMovie.genre,
+                    streamingPlatforms: [newMovie.platform] 
+                });
+                setFavoriteMovies([...favoriteMovies, {...newMovie, rating: parseFloat(newMovie.rating) }]);
+                setNewMovie({ title: '', rating: '', genre: '', platform: '' });
+            } catch (error) {
+                console.error('Error adding movies:' , error);
+            }
         }
     };
 
