@@ -1,10 +1,38 @@
-import React from 'react';
-import { movies_db } from './Home'; // Import the movie data
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './Favorites.css'; // Import CSS for styling
 
-export function Favorites() {
+const Favorites = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        const response = await axios.get('http://localhost:3000/api/movies');
+        setMovies(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+        setError('Error fetching movies');
+        setLoading(false);
+      }
+    }
+
+    fetchMovies();
+  }, []);
+
+  if (loading) {
+    return <p>Loading movies...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   // Sort movies by rank
-  const sortedMovies = [...movies_db].sort((a, b) => a.rank - b.rank);
+  const sortedMovies = [...movies].sort((a, b) => a.rank - b.rank);
 
   return (
     <div className="favorites">
