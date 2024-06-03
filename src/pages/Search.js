@@ -12,6 +12,7 @@ export function SearchFeat() {
           ...lastRatings, [movieID]: newRating
         }));
     };
+    
     const [isComedyChecked, setIsComedyChecked] = useState(false);
     const [isActionChecked, setIsActionChecked] = useState(false);
     const [isHorrorChecked, setIsHorrorChecked] = useState(false);
