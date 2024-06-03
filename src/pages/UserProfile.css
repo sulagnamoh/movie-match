@@ -37,3 +37,32 @@
     border-radius: 5px;
   }
  
+  .add-movie {
+    margin-top: 20px;
+  }
+
+  .add-movie input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .add-movie button {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4f9cc9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .add-movie button:hover {
+    background-color: #267daf;
+  }

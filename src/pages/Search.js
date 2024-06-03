@@ -7,6 +7,7 @@ export function SearchFeat() {
     const [movies, setMovies] = useState([]);
     const [searchResults, setSearchResults] = useState("");
     const [movieRatings, setMovieRatings] = useState({});
+    
     const [isComedyChecked, setIsComedyChecked] = useState(false);
     const [isActionChecked, setIsActionChecked] = useState(false);
     const [isHorrorChecked, setIsHorrorChecked] = useState(false);

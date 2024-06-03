@@ -2,11 +2,12 @@
   text-align: center;
 }
 
-
 .main-content {
   padding: 20px;
   overflow: auto;
+  width: calc(100% - 200px); 
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -22,28 +23,30 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 .header {
-    background-color: lightblue;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-};
+  background-color: lightblue;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
 
 .App-link {
-  color: white
+  color: white;
 }
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+      transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+      transform: rotate(360deg);
   }
 }
 
 .app-container {
   display: flex;
+  width: 100%;
 }
 
 .main-content {
@@ -73,9 +76,9 @@
   flex-direction: column;
   margin-right: 100px;
 }
-.main-content-2 {
-  margin-bottom: 15px; /* Add margin to create space below the header */
 
+.main-content-2 {
+  margin-bottom: 15px; 
   width: 100%;
 }
 
