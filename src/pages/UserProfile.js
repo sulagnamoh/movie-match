@@ -3,7 +3,7 @@ import './UserProfile.css';
 
 
 const UserProfile = () => {
- const userName = 'John Doe'; // This would be fetched from your backend in a real app
+ const userName = 'John Doe';
  const favoriteMovies = [
    { title: 'Inception', rating: 5 },
    { title: 'Interstellar', rating: 4.5 },
@@ -12,7 +12,7 @@ const UserProfile = () => {
 
 
  const goToFavorites = () => {
-   window.location.href = './pages/Favorites'; // Adjust the path as needed
+   window.location.href = './pages/Favorites'; 
  };
 
 
