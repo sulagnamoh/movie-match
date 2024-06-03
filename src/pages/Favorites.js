@@ -3,8 +3,6 @@ import { movies_db } from './Home'; // Import the movie data
 import './Favorites.css'; // Import CSS for styling
 
 export function Favorites() {
-  // Sort movies by rank
-  const sortedMovies = [...movies_db].sort((a, b) => a.rank - b.rank);
 
   return (
     <div className="favorites">
