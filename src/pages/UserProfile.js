@@ -4,11 +4,7 @@ import './UserProfile.css';
 
 const UserProfile = () => {
     const [user, setUser] = useState({ email: '', name: '' });
-    const [favoriteMovies, setFavoriteMovies] = useState([
-        { title: 'Inception', rating: 5, genre: 'Sci-Fi', platform: 'Netflix' },
-        { title: 'Interstellar', rating: 4.5, genre: 'Sci-Fi', platform: 'Hulu' },
-        { title: 'The Dark Knight', rating: 5, genre: 'Action', platform: 'Disney+' }
-    ]);
+    const [favoriteMovies, setFavoriteMovies] = useState([    ]);
     const [newMovie, setNewMovie] = useState({ title: '', rating: '', genre: '', platform: '' });
     const [errors, setErrors] = useState({title: '', rating: '', genre: '', platform: '' });
     const validGenres = ['Action', 'Horror', 'Comedy'];
@@ -24,10 +20,18 @@ const UserProfile = () => {
     const goToFavorites = () => {
         window.location.href = './pages/Favorites'; // Adjust the path as needed
     };
-
-    const validateInputs = () => {
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    };
+    const validateInputs = async () => {
         let valid = true;
         let invalidInput = { title: '', rating: '', genre: '', platform: '' };
+
+        const normalizedGenre = newMovie.genre.toLowerCase();
+        const normalizedPlatform = newMovie.platform.toLowerCase();
+        const validGenresLower = validGenres.map(genre => genre.toLowerCase());
+        const validPlatformsLower = validPlatforms.map(platform => platform.toLowerCase());
+        
         if (!newMovie.title) 
         {
             invalidInput.title = 'Title is required.';
@@ -38,29 +42,42 @@ const UserProfile = () => {
             invalidInput.rating = 'Rating must be between 1 and 5.';
             valid = false;
         }
-        if (!validGenres.includes(newMovie.genre))
-        {
-            invalidInput.genre = 'Genre must be action, horror, and or comedy.';
+
+        
+        if (!validGenresLower.includes(normalizedGenre)) {
+            invalidInput.genre = 'Genre must be Action, Horror, or Comedy.';
             valid = false;
         }
-        if (!validPlatforms.includes(newMovie.platform))
-        {
-            invalidInput.platform = 'Platform must be Hulu, Netflix, and or Disney+.';
+
+        if (!validPlatformsLower.includes(normalizedPlatform)) {
+            invalidInput.platform = 'Platform must be Hulu, Netflix, Amazon Prime, or Disney+.';
             valid = false;
         }
+
         setErrors(invalidInput);
         return valid;
     };
+   
 
     const addMovie = async() => {
         if (validateInputs()) {
             try{
-                const response = await axios.post('http://localhost:3000/api/movies',{
-                    title: newMovie.title,
-                    genre: newMovie.genre,
-                    streamingPlatforms: [newMovie.platform] 
+                const response = await axios.get(`http://localhost:3000/api/movies?title=${newMovie.title}`);
+            const existingMovie = response.data.find(movie => movie.title.toLowerCase() === newMovie.title.toLowerCase());
+            if (existingMovie) {
+                setErrors({ title: 'Movie already included.' });
+                return;
+            }
+
+                const capitalizedGenre = capitalizeFirstLetter(newMovie.genre);
+                const capitalizedPlatform = capitalizeFirstLetter(newMovie.platform);
+                const capitalizedTitle = capitalizeFirstLetter(newMovie.title);
+                await axios.post('http://localhost:3000/api/movies',{
+                    title: capitalizedTitle,
+                    genre: capitalizedGenre,
+                    streamingPlatforms: [capitalizedPlatform]
                 });
-                setFavoriteMovies([...favoriteMovies, {...newMovie, rating: parseFloat(newMovie.rating) }]);
+                setFavoriteMovies([...favoriteMovies, { ...newMovie, genre: capitalizedGenre, platform: capitalizedPlatform, rating: parseFloat(newMovie.rating) }]);
                 setNewMovie({ title: '', rating: '', genre: '', platform: '' });
             } catch (error) {
                 console.error('Error adding movies:' , error);
@@ -78,7 +95,7 @@ const UserProfile = () => {
 
     return (
         <div className="profile-page">
-            <h1>{user.name}</h1> {/* Display the user's name */}
+            <h1>{user.name}'s Profile</h1> {/* Display the user's name */}
             <button onClick={goToFavorites}>Favorite Movies</button>
             <ul>
                 {favoriteMovies.map((movie, index) => (
@@ -88,14 +105,15 @@ const UserProfile = () => {
                 ))}
             </ul>
             <div className="add-movie">
+            {errors.title && <div className='error'>{errors.title}</div>}
                 <input
                     type="text"
                     name="title"
                     placeholder="Movie Title"
                     value={newMovie.title}
                     onChange={inputChange}/>
-                    {errors.title && <div className='error'>{errors.title}</div>}
-
+                    
+                {errors.rating && <div className='error'>{errors.rating}</div>}
                 <select
                     name="rating"
                     value={newMovie.rating}
@@ -105,23 +123,23 @@ const UserProfile = () => {
                         <option key={num} value={num}>{num}</option>
                     ))}
                 </select>
-                {errors.rating && <div className='error'>{errors.rating}</div>}
                 
+                {errors.genre && <div className='error'>{errors.genre}</div>}
                 <input
                     type="text"
                     name="genre"
                     placeholder="Genre"
                     value={newMovie.genre}
                     onChange={inputChange} />
-                {errors.genre && <div className='error'>{errors.genre}</div>}
-
+                
+                {errors.platform && <div className='error'>{errors.platform}</div>}
                 <input
                     type="text"
                     name="platform"
                     placeholder="Streaming Platform"
                     value={newMovie.platform}
                     onChange={inputChange}/>
-                {errors.platform && <div className='error'>{errors.platform}</div>}
+                
                 <button onClick={addMovie}>Add Movie</button>
             </div>
         </div>
