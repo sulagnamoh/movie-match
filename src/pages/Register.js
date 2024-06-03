@@ -22,8 +22,7 @@ function Register() {
                 alert("User already exists");
             } else if (res.data === "notexist") {
                 alert("User created");
-                // Navigate to UserProfile with user data
-                navigate('/profile', { state: { email, name } });
+                navigate('/login', { state: { email, name } });
             }
         } catch (error) {
             alert("Registration failed");
@@ -47,7 +46,7 @@ function Register() {
                     <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                 </div>
                 <div className="input">
-                    <img src={password_icon} alt="" />
+                    <img src={user_icon} alt="" />
                     <input type="name" onChange={(e) => setName(e.target.value)} placeholder="Name" />
                 </div>
             </div>

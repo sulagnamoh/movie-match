@@ -11,42 +11,53 @@ app.get("/", (req, res) => {
     res.send("Welcome to the backend!");
 });
 
-app.post("/", async (req, res) => {
+app.post("/login", async (req, res) => {
     const { email, password } = req.body;
-    try {
-        const check = await collection.findOne({ email });
 
-        if (check) {
-            res.json("exist");
+    try {
+        const user = await collection.findOne({ email: email, password: password });
+
+        if (user) {
+            res.json({ status: "success", user: user });
         } else {
-            res.json("notexist");
+            res.json({ status: "fail" });
         }
+
     } catch (e) {
-        res.json("notexist");
+        res.json({ status: "error" });
     }
 });
 
-app.post("/register", async (req, res) => {
-    const { email, password } = req.body;
 
-    const data = {
-        email,
-        password
-    };
+
+app.post("/register",async(req,res)=> {
+    const{email,name, password} = req.body
+
+    const data={
+        email:email,
+        password:password,
+        name:name,
+    }
+
+
 
     try {
-        const check = await collection.findOne({ email });
+        const check=await collection.findOne({email:email})
 
-        if (check) {
-            res.json("exist");
-        } else {
-            res.json("notexist");
-            await collection.insertMany([data]);
+        if(check) {
+            res.json("exist")
         }
-    } catch (e) {
-        res.json("notexist");
+        else {
+            res.json("notexist")
+            await collection.insertMany([data])
+        }
+
     }
-});
+    catch(e) {
+        res.json("notexist")
+
+    }
+})
 
 // Correct the endpoint to use movieCollection
 app.get("/api/movies", async (req, res) => {

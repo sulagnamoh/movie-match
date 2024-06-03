@@ -20,7 +20,7 @@ function Login() {
             if (res.data.status === "success") {
                 // Store user data in localStorage
                 localStorage.setItem('user', JSON.stringify(res.data.user));
-                navigate("/home");
+                navigate("/profile");
             } else if (res.data.status === "fail") {
                 alert("User is not registered");
             }
