@@ -19,7 +19,7 @@ export function SearchFeat() {
     useEffect(() => {
         async function fetchMovies() {
             try {
-                const response = await axios.get('http://localhost:3001/api/movies');
+                const response = await axios.get('http://localhost:3000/api/movies');
                 setMovies(response.data);
             } catch (error) {
                 console.error('Error fetching movies:', error);
