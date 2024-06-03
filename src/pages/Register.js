@@ -46,7 +46,7 @@ function Register() {
                     <img src={password_icon} alt="" />
                     <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                 </div>
-                <div className="name">
+                <div className="input">
                     <img src={password_icon} alt="" />
                     <input type="name" onChange={(e) => setName(e.target.value)} placeholder="Name" />
                 </div>
