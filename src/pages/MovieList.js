@@ -22,7 +22,7 @@ const MovieList = () => {
     return (
         <div className="movie-list">
             {movies.map((movie) => (
-                <div key={movie._id} className="movie-item">
+                <div key={movie._id} className="movie-box">
                     <h3>{movie.title}</h3>
                     <p>Genre: {movie.genre}</p>
                     <p>Streaming Platforms: {movie.streamingPlatforms.join(', ')}</p>

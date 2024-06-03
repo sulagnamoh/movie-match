@@ -27,13 +27,14 @@ function App() {
     return (
         <div>
             <header className="header">
-                <h1>Movie Match</h1>
-                <h5>Your guide to finding your new favorite movies</h5>
+            <div class="bold-header">
+            <div style={{fontSize: '30px'}}>
+                Movie Match 🎥
+                </div>
+                </div>
+                <h5>Your guide to finding your new favorite movies!</h5>
             </header>
             <Router>
-                <div className='main-content-2'>
-                    <nav className='header-2'>All Movies</nav>
-                </div>
                 <div className="app-container">
                     <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
                     <div className="main-content">

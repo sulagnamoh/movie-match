@@ -75,17 +75,17 @@ export function SearchFeat() {
 
     return (
         <div className='search-and-nav'>
-            <div style={{ marginLeft: '20px', marginRight: '5px' }}>
-                Genres:
-                <label style={{ marginRight: '10px' }}>
-                    <input
-                        type="checkbox"
-                        name="comedy"
-                        checked={isComedyChecked}
-                        onChange={handleCheckboxChange}
-                    />
-                    Comedy
-                </label>
+            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginRight: '5px' }}>
+    <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Genres:</div>
+    <label style={{ marginLeft: '5px', marginRight: '10px' }}>
+        <input
+            type="checkbox"
+            name="comedy"
+            checked={isComedyChecked}
+            onChange={handleCheckboxChange}
+        />
+        Comedy 🤣
+    </label>
                 <label style={{ marginRight: '10px' }}>
                     <input
                         type="checkbox"
@@ -93,7 +93,7 @@ export function SearchFeat() {
                         checked={isActionChecked}
                         onChange={handleCheckboxChange}
                     />
-                    Action
+                    Action 🏃
                 </label>
                 <label style={{ marginRight: '10px' }}>
                     <input
@@ -102,9 +102,12 @@ export function SearchFeat() {
                         checked={isHorrorChecked}
                         onChange={handleCheckboxChange}
                     />
-                    Horror
+                    Horror 😱
                 </label>
-                <label style={{ marginRight: '10px' }}>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginRight: '5px' }}>
+    <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Streaming Platforms:</div>
+                <label style={{ marginLeft: '5px', marginRight: '10px' }}>
                     <input
                         type="checkbox"
                         name="netflix"
