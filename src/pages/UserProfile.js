@@ -18,7 +18,7 @@ const UserProfile = () => {
     }, []);
 
     const goToFavorites = () => {
-        window.location.href = './pages/Favorites'; // Adjust the path as needed
+        window.location.href = './Favorites'; // Adjust the path as needed
     };
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();

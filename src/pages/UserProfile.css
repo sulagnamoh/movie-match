@@ -18,13 +18,14 @@
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #d79c65;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: Courier, monospace;
   }
    .profile-page button:hover {
-    background-color: #0056b3;
+    background-color: #dfc38c;
   }
    .profile-page ul {
     list-style-type: none;
@@ -58,12 +59,12 @@
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #4f9cc9;
+    background-color: #4ba465;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
 
   .add-movie button:hover {
-    background-color: #267daf;
+    background-color: #5ae486;
   }
