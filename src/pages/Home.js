@@ -3,7 +3,7 @@ import MovieList from './MovieList';
 import './Home.css';
 
 const goToFavorites = () => {
-    window.location.href = './pages/Favorites'; // Adjust the path as needed
+    window.location.href = './pages/Favorites'; 
 };
 
 const Home = () => {

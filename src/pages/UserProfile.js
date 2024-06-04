@@ -10,7 +10,6 @@ const UserProfile = () => {
     const validGenres = ['Action', 'Horror', 'Comedy'];
     const validPlatforms = ['Netflix', 'Hulu', 'Disney+', 'Amazon Prime'];
     useEffect(() => {
-        // Retrieve user data from localStorage
         const userData = JSON.parse(localStorage.getItem('user'));
         if (userData) {
             setUser(userData);
@@ -18,7 +17,7 @@ const UserProfile = () => {
     }, []);
 
     const goToFavorites = () => {
-        window.location.href = './Favorites'; // Adjust the path as needed
+        window.location.href = './Favorites'; 
     };
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();

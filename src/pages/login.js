@@ -18,7 +18,6 @@ function Login() {
         try {
             const res = await axios.post("http://localhost:3000/login", { email, password });
             if (res.data.status === "success") {
-                // Store user data in localStorage
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 navigate("/profile");
             } else if (res.data.status === "fail") {

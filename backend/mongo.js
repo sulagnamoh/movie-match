@@ -32,7 +32,7 @@ const movieSchema = new mongoose.Schema({
         required: true
     },
     streamingPlatforms: {
-        type: [String],  // Correctly defining as an array of strings
+        type: [String], 
         required: true
     }
 });
