@@ -97,6 +97,20 @@ app.post("/user-data", async (req, res) => {
     }
 });
 
+app.get('/api/user-ratings/:userID', async (req, res) => {
+    const { userID } = req.params;
+    console.log(`Fetching ratings for userID: ${userID}`);
+
+    try {
+        const ratings = await ratingCollection.find({ userID: userID });
+        console.log(`Ratings found: ${JSON.stringify(ratings)}`);
+        res.json(ratings);
+    } catch (e) {
+        console.error('Error fetching user ratings:', e);
+        res.status(500).send('Error fetching user ratings: ' + e.message);
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
