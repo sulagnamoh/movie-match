@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const url = "mongodb+srv://Anish:jaitra123@movie-match.nbbfiaj.mongodb.net/test";
+const url = "mongodb+srv://movie-match-user:movie-match@movie-match.nbbfiaj.mongodb.net/test";
+// this url contains access using a secondary created user that does not contain admin access but can read/write to any 
+// collection in the database
 
 mongoose.connect(url)
     .then(() => console.log('Connected to MongoDB'))
