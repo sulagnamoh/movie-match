@@ -16,6 +16,7 @@ import Profile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import Search from './pages/Search';
 import UserProfile from './pages/UserProfile';
+import HomeScreen from './pages/Home';
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -34,6 +35,7 @@ function App() {
                 </div>
                 <h5>Your guide to finding your new favorite movies!</h5>
             </header>
+            <HomeScreen></HomeScreen> 
             <Router>
                 <div className="app-container">
                     <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
