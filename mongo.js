@@ -34,9 +34,17 @@ const movieSchema = new mongoose.Schema({
     streamingPlatforms: {
         type: [String], 
         required: true
+    },
+
+    ratings: {
+        type: [Number], 
+        default: []
+    },
+    averageRating: {
+        type: Number,
+        default: 0
     }
 });
-
 const movieCollection = mongoose.model("movies", movieSchema);
 
 module.exports = { collection, movieCollection };
