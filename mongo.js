@@ -35,8 +35,16 @@ const movieSchema = new mongoose.Schema({
         type: [String], 
         required: true
     },
-});
 
+    ratings: {
+        type: [Number], 
+        default: []
+    },
+    averageRating: {
+        type: Number,
+        default: 0
+    },
+});
 const movieCollection = mongoose.model("movies", movieSchema);
 
 const ratingSchema = new mongoose.Schema({
