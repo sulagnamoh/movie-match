@@ -17,6 +17,9 @@
   background-color: #f0f9ff;
   transition: background-color 0.3s ease; 
   box-shadow: 10px 10px 5px pink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-box:hover {
@@ -33,4 +36,29 @@
   font-size: 1rem;
   color: #666;
 }
-  
+
+.rating-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+.confirm-rating-btn {
+  background-color: #485648; /* Green */
+  border: none;
+  color: white;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-rating-btn:hover {
+  background-color: #3e4a3e;
+}

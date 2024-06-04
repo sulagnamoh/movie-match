@@ -1,5 +1,5 @@
 const express = require("express");
-const { collection, movieCollection } = require("./mongo");
+const { collection, movieCollection, ratingCollection } = require("./mongo");
 const cors = require("cors");
 const app = express();
 
@@ -15,10 +15,10 @@ app.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await collection.findOne({ email: email, password: password });
+        const user = await collection.findOne({ email, password });
 
         if (user) {
-            res.json({ status: "success", user: user });
+            res.json({ status: "success", user });
         } else {
             res.json({ status: "fail" });
         }
@@ -28,43 +28,72 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.post("/register", async (req, res) => {
+    const { email, name, password } = req.body;
 
-
-app.post("/register",async(req,res)=> {
-    const{email,name, password} = req.body
-
-    const data={
-        email:email,
-        password:password,
-        name:name,
-    }
-
-
+    const data = {
+        email,
+        password,
+        name,
+    };
 
     try {
-        const check=await collection.findOne({email:email})
+        const check = await collection.findOne({ email });
 
-        if(check) {
-            res.json("exist")
+        if (check) {
+            res.json("exist");
+        } else {
+            await collection.create(data);
+            res.json("notexist");
         }
-        else {
-            res.json("notexist")
-            await collection.insertMany([data])
-        }
 
+    } catch (e) {
+        res.json("error");
     }
-    catch(e) {
-        res.json("notexist")
-
-    }
-})
+});
 
 app.get("/api/movies", async (req, res) => {
     try {
         const movies = await movieCollection.find({});
-        res.json(movies); 
+        res.json(movies);
     } catch (e) {
         res.status(500).send('Error fetching movies: ' + e.message);
+    }
+});
+
+app.post("/api/movies", async (req, res) => {
+    const { title, genre, streamingPlatforms } = req.body;
+    try {
+        const newMovie = await movieCollection.create({ title, genre, streamingPlatforms });
+        res.status(201).json(newMovie);
+        console.log(`Movie ${title} added successfully`);
+    } catch (e) {
+        res.status(500).send('Error adding movie: ' + e.message);
+        console.error("Error adding movie:", e);
+    }
+});
+
+app.post("/user-data", async (req, res) => {
+    const { userID, movieID, rating } = req.body;
+
+    try {
+        const newRating = { userID, movieID, rating };
+        
+        const checkRating = await ratingCollection.findOne({ userID, movieID });
+        if (checkRating) {
+            // Update existing rating
+            await ratingCollection.updateOne({ userID, movieID }, { $set: { rating } });
+            res.json({ status: "updated", rating: newRating });
+            console.log("Rating updated");
+        } else {
+            // Insert new rating
+            await ratingCollection.create(newRating);
+            res.json({ status: "saved", rating: newRating });
+            console.log("Rating saved");
+        }
+    } catch (e) {
+        res.status(500).send("Error saving rating");
+        console.error("Error saving rating:", e);
     }
 });
 
@@ -72,21 +101,4 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-});
-
-app.post("/api/movies", async (req, res) => {
-    const { title, genre, streamingPlatforms } = req.body;
-    try {
-        const newMovie = new movieCollection({
-            title,
-            genre,
-            streamingPlatforms
-        });
-        await newMovie.save();
-        res.status(201).json(newMovie);
-        console.log(`Movie ${title} added successfully`);
-    } catch (e) {
-        res.status(500).send('Error adding movie: ' + e.message);
-        console.error("Error adding movie:", e);
-    }
 });

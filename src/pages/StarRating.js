@@ -25,13 +25,13 @@ const fillStar = (star, index) => {
         case 1:
             return <span className="selected-star">★</span>;
         case 2:
-            return <span className="half-selected-star">☆</span>; // Changed for visual consistency
+            return <span className="half-selected-star">☆</span>; 
         default:
             return null;
     }
 };
 
-const StarRating = ({ initialRating = 0 }) => {
+const StarRating = ({ initialRating = 0, onRatingChange }) => {
     const [rating, setRating] = useState(initialRating);
 
     const handleRateChange = (starValue, event) => {
@@ -39,6 +39,7 @@ const StarRating = ({ initialRating = 0 }) => {
         const isHalfStar = (event.clientX - rect.left) < (rect.width / 2);
         const newRating = isHalfStar ? starValue - 0.5 : starValue;
         setRating(newRating);
+        onRatingChange(newRating);
     };
 
     return (
@@ -51,5 +52,6 @@ const StarRating = ({ initialRating = 0 }) => {
         </div>
     );
 };
+
 
 export default StarRating;
