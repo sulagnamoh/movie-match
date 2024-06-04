@@ -1,23 +1,58 @@
+/* General styles for the favorites container */
 .favorites {
-    width: 1000000px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    justify-content: center;
-    border-radius: 8px;
-    background-color: #ffffff;
-    margin-right: 10px;
-  }
-  
-  
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 8px 40px rgba(255, 105, 180, 0.5); /* Added pink shadow */
+  font-family: 'Arial', sans-serif;
+}
 
-  .favorites-item {
-    background: pink; 
-    color: black; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px; 
-    text-align: center; 
-    margin-bottom: 20px; 
-  }
+/* Heading style */
+.favorites h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Style for the list of movies */
+.favorites ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style for each movie item */
+.favorites li {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+/* Hover effect for each movie item */
+.favorites li:hover {
+  transform: scale(1.02);
+}
+
+/* Movie title */
+.favorites h3 {
+  color: #333;
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+/* Movie genre */
+.favorites p {
+  color: #666;
+  margin: 5px 0;
+}
+
+/* Style for the user rating */
+.favorites p:last-child {
+  font-weight: bold;
+  color: #007BFF;
+}
