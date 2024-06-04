@@ -7,6 +7,7 @@ export function SearchFeat() {
     const [movies, setMovies] = useState([]);
     const [searchResults, setSearchResults] = useState("");
     const [movieRatings, setMovieRatings] = useState({});
+    const [user, setUser] = useState(null);
     
     const [isComedyChecked, setIsComedyChecked] = useState(false);
     const [isActionChecked, setIsActionChecked] = useState(false);
@@ -27,12 +28,47 @@ export function SearchFeat() {
         }
 
         fetchMovies();
+
+        try {
+            const userData = JSON.parse(localStorage.getItem('user'));
+            if (userData) {
+                setUser(userData);
+            }
+        } catch (error) {
+            console.error('Error loading data from localStorage:', error);
+        }
     }, []);
 
     const handleRateChange = (movieID, newRating) => {
         setMovieRatings(lastRatings => ({
             ...lastRatings, [movieID]: newRating
         }));
+    };
+
+    const handleConfirmRating = async (movieId) => {
+        if (!user || !user._id) {
+            alert('Please log in to rate movies.');
+            return;
+        }
+
+        const rating = movieRatings[movieId];
+        if (rating === undefined || rating === null) {
+            alert('Please select a rating before confirming.');
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:3000/user-data', {
+                userID: user._id,
+                movieID: movieId,
+                rating: rating,
+            });
+            alert(`You rated this movie ${rating} stars.`);
+            console.log('Rating saved:', response.data);
+        } catch (error) {
+            console.error('Error saving rating:', error);
+            alert('Error saving rating. Please try again.');
+        }
     };
 
     const handleCheckboxChange = (event) => {
@@ -76,16 +112,16 @@ export function SearchFeat() {
     return (
         <div className='search-and-nav'>
             <div style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginRight: '5px' }}>
-    <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Genres:</div>
-    <label style={{ marginLeft: '5px', marginRight: '10px' }}>
-        <input
-            type="checkbox"
-            name="comedy"
-            checked={isComedyChecked}
-            onChange={handleCheckboxChange}
-        />
-        Comedy 🤣
-    </label>
+                <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Genres:</div>
+                <label style={{ marginLeft: '5px', marginRight: '10px' }}>
+                    <input
+                        type="checkbox"
+                        name="comedy"
+                        checked={isComedyChecked}
+                        onChange={handleCheckboxChange}
+                    />
+                    Comedy 🤣
+                </label>
                 <label style={{ marginRight: '10px' }}>
                     <input
                         type="checkbox"
@@ -104,9 +140,9 @@ export function SearchFeat() {
                     />
                     Horror 😱
                 </label>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginRight: '5px' }}>
-    <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Streaming Platforms:</div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginRight: '5px' }}>
+                <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Streaming Platforms:</div>
                 <label style={{ marginLeft: '5px', marginRight: '10px' }}>
                     <input
                         type="checkbox"
@@ -153,9 +189,15 @@ export function SearchFeat() {
                             <p>Genre: {movie.genre}</p>
                             <p>Streaming Platforms: {movie.streamingPlatforms.join(', ')}</p>
                             <StarRating
-                                rating={movieRatings[movie._id] || 0}
-                                rateChanged={(newRating) => handleRateChange(movie._id, newRating)}
+                                initialRating={movieRatings[movie._id] || 0}
+                                onRatingChange={(newRating) => handleRateChange(movie._id, newRating)}
                             />
+                            <button
+                                onClick={() => handleConfirmRating(movie._id)}
+                                className="confirm-rating-btn"
+                            >
+                                Confirm Rating
+                            </button>
                         </div>
                     </div>
                 ))}

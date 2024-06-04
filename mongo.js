@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const url = "mongodb+srv://Anish:jaitra123@movie-match.nbbfiaj.mongodb.net/test";
+require('dotenv').config();
+const url = process.env.MONGODB_URL;
 
 mongoose.connect(url)
     .then(() => console.log('Connected to MongoDB'))
