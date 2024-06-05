@@ -94,12 +94,12 @@ const UserProfile = () => {
 
     return (
         <div className="profile-page">
-            <h1>{user.name}'s Profile</h1> {/* Display the user's name */}
+            <h1>{user.name}'s Profile 🍿</h1> {/* Display the user's name */}
             <button onClick={goToFavorites}>Favorite Movies</button>
             <ul>
                 {favoriteMovies.map((movie, index) => (
                     <li key={index}>
-                        {movie.title} - Rating: {movie.rating} - Genre: {movie.genre} - Platform: {movie.platform}
+                        {movie.title} - Rating:  {movie.rating} - Genre: {movie.genre} - Platform: {movie.platform}
                     </li>
                 ))}
             </ul>
@@ -117,7 +117,7 @@ const UserProfile = () => {
                     name="rating"
                     value={newMovie.rating}
                     onChange={inputChange}>
-                    <option value="">Select Rating</option>
+                    <option value="">Select Rating ⭐</option>
                     {[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map(num => (
                         <option key={num} value={num}>{num}</option>
                     ))}
