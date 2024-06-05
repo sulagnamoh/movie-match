@@ -81,12 +81,10 @@ app.post("/user-data", async (req, res) => {
         
         const checkRating = await ratingCollection.findOne({ userID, movieID });
         if (checkRating) {
-            // Update existing rating
             await ratingCollection.updateOne({ userID, movieID }, { $set: { rating } });
             res.json({ status: "updated", rating: newRating });
             console.log("Rating updated");
         } else {
-            // Insert new rating
             await ratingCollection.create(newRating);
             res.json({ status: "saved", rating: newRating });
             console.log("Rating saved");
