@@ -26,10 +26,10 @@ const UserProfile = () => {
         let valid = true;
         let invalidInput = { title: '', rating: '', genre: '', platform: '' };
 
-        const normalizedGenre = newMovie.genre.toLowerCase();
-        const normalizedPlatform = newMovie.platform.toLowerCase();
-        const validGenresLower = validGenres.map(genre => genre.toLowerCase());
-        const validPlatformsLower = validPlatforms.map(platform => platform.toLowerCase());
+        const lowerGenre = newMovie.genre.toLowerCase();
+        const lowerPlatform = newMovie.platform.toLowerCase();
+        const vGenreslower = validGenres.map(genre => genre.toLowerCase());
+        const vPlatformslower = validPlatforms.map(platform => platform.toLowerCase());
         
         if (!newMovie.title) 
         {
@@ -43,12 +43,12 @@ const UserProfile = () => {
         }
 
         
-        if (!validGenresLower.includes(normalizedGenre)) {
+        if (!vGenreslower.includes(lowerGenre)) {
             invalidInput.genre = 'Genre must be Action, Horror, or Comedy.';
             valid = false;
         }
 
-        if (!validPlatformsLower.includes(normalizedPlatform)) {
+        if (!vPlatformslower.includes(lowerPlatform)) {
             invalidInput.platform = 'Platform must be Hulu, Netflix, Amazon Prime, or Disney+.';
             valid = false;
         }
