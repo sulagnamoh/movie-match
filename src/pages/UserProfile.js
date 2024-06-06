@@ -20,7 +20,7 @@ const UserProfile = () => {
         window.location.href = './Favorites'; 
     };
     const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+        return string.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     };
     const validateInputs = async () => {
         let valid = true;
