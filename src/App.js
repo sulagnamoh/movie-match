@@ -6,7 +6,7 @@ import {
     Routes,
     Route,
 } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home'; 
 import Sidebar from './pages/Sidebar';
 import Login from './pages/login';
 import Register from './pages/Register';
