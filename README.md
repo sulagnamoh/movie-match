@@ -1,5 +1,4 @@
-Movie Match
-A MERN stack web application for finding movies based on your favorite genres and streaming platforms! Also a place to store YOUR favorite movies and remember how much you enjoyed them (or didn't).
+Movie Match - A MERN stack web application for finding movies based on your favorite genres and streaming platforms! Also a place to store YOUR favorite movies and remember how much you enjoyed them (or didn't).
 
 1. Clone the directory
 2. git clone https://github.com/sulagnamoh/movie-match.git
