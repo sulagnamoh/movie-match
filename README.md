@@ -15,3 +15,10 @@ Network Troubleshooting: The user should be prompted with "Connected to MongoDB"
 
 The backend server runs on port 3000
 The frontend development runs on [http://localhost:3001] in your browser
+
+Contributors:
+Sulagna Mohanty - sulagnamoh
+Anish Athmakoor - Anish-1101
+Sehaj Pannu - spannuu
+Deetshana Parthipan - deetpar123
+Sahar Hussein - saharhusseinn
